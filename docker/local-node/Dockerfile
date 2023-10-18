@@ -1,6 +1,6 @@
 # Image is always built from the server image to reuse the common parts
 # This image is expected to be built locally beforehand (implemented in the `zk` tool)
-FROM matterlabs/server-v2:latest2.0
+FROM linked0/server-v2:latest2.0
 
 WORKDIR /
 
