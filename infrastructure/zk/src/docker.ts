@@ -90,7 +90,7 @@ async function _build(image: string, tagList: string[]) {
         await contract.build();
     }
 
-    const tagsToBuild = tagList.map((tag) => `-t matterlabs/${image}:${tag}`).join(' ');
+    const tagsToBuild = tagList.map((tag) => `-t linked0/${image}:${tag}`).join(' ');
     // generate list of tags for image - we want 3 tags (latest, SHA, SHA+TimeStamp) for listed components and only "latest" for everything else
 
     // Conditionally add build argument if image is prover-v2
@@ -116,20 +116,20 @@ async function _push(image: string, tagList: string[], publishPublic: boolean = 
     // For development purposes, we want to use `2.0` tags for 2.0 images, just to not interfere with 1.x
 
     for (const tag of tagList) {
-        await utils.spawn(`docker push matterlabs/${image}:${tag}`);
-        await utils.spawn(
-            `docker tag matterlabs/${image}:${tag} us-docker.pkg.dev/matterlabs-infra/matterlabs-docker/${image}:${tag}`
-        );
-        await utils.spawn(`docker push us-docker.pkg.dev/matterlabs-infra/matterlabs-docker/${image}:${tag}`);
+        await utils.spawn(`docker push linked0/${image}:${tag}`);
+        // await utils.spawn(
+        //     `docker tag linked0/${image}:${tag} us-docker.pkg.dev/linked0-infra/linked0-docker/${image}:${tag}`
+        // );
+        // await utils.spawn(`docker push us-docker.pkg.dev/linked0-infra/linked0-docker/${image}:${tag}`);
 
-        if (image == 'circuit-synthesizer') {
-            await utils.spawn(
-                `docker tag us-docker.pkg.dev/matterlabs-infra/matterlabs-docker/${image}:${tag} asia-docker.pkg.dev/matterlabs-infra/matterlabs-docker/${image}:${tag}`
-            );
-            await utils.spawn(`docker push asia-docker.pkg.dev/matterlabs-infra/matterlabs-docker/${image}:${tag}`);
-        }
+        // if (image == 'circuit-synthesizer') {
+        //     await utils.spawn(
+        //         `docker tag us-docker.pkg.dev/linked0-infra/linked0-docker/${image}:${tag} asia-docker.pkg.dev/linked0-infra/linked0-docker/${image}:${tag}`
+        //     );
+        //     await utils.spawn(`docker push asia-docker.pkg.dev/linked0-infra/linked0-docker/${image}:${tag}`);
+        // }
         if (image == 'external-node' && publishPublic) {
-            await utils.spawn(`docker push matterlabs/${image}-public:${tag}`);
+            await utils.spawn(`docker push linked0/${image}-public:${tag}`);
         }
     }
 }
