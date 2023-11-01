@@ -1,7 +1,7 @@
 # Sensitive values which MUST be different for production
 # Values provided here are valid for the development infrastructure only.
 
-database_url="postgres://postgres@localhost/zksync_local"
+database_url="postgres://postgres@localhost:5432/zksync_local"
 test_database_url="postgres://postgres@localhost/zksync_local_test"
 
 [eth_sender.sender]

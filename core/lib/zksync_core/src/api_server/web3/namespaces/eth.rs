@@ -653,6 +653,7 @@ impl<G: L1GasPriceProvider> EthNamespace<G> {
     #[tracing::instrument(skip(self, tx_bytes))]
     pub async fn send_raw_transaction_impl(&self, tx_bytes: Bytes) -> Result<H256, Web3Error> {
         const METHOD_NAME: &str = "send_raw_transaction";
+        tracing::debug!("jay: Send raw transaction");
 
         let method_latency = API_METRICS.start_call(METHOD_NAME);
         let (mut tx, hash) = self.state.parse_transaction_bytes(&tx_bytes.0)?;
