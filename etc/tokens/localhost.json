@@ -1,1 +1,98 @@
-[]
+[
+    {
+      "name": "DAI",
+      "symbol": "DAI",
+      "decimals": 18,
+      "address": "0x9fe0932270ae78f40274CB889FEAdc4492630d22"
+    },
+    {
+      "name": "wBTC",
+      "symbol": "wBTC",
+      "decimals": 8,
+      "address": "0xC5da25ab003152500724AC7A69C5239187327eb1"
+    },
+    {
+      "name": "BAT",
+      "symbol": "BAT",
+      "decimals": 18,
+      "address": "0x68A77cBB85e2baE1e57a0517cae15db042FFa5f9"
+    },
+    {
+      "name": "GNT",
+      "symbol": "GNT",
+      "decimals": 18,
+      "address": "0xDFf5e88D9B6209734Fb07925306aEE52219A30d9"
+    },
+    {
+      "name": "MLTT",
+      "symbol": "MLTT",
+      "decimals": 18,
+      "address": "0x90A396cBD179B2Cb00f8f287b7Cc2B9568a8b55C"
+    },
+    {
+      "name": "DAIK",
+      "symbol": "DAIK",
+      "decimals": 18,
+      "address": "0x45A067551837f4D90732A6C8f3D1051080B58ECF"
+    },
+    {
+      "name": "wBTCK",
+      "symbol": "wBTCK",
+      "decimals": 8,
+      "address": "0x8A5959BC5b2B9776BAF12ff82C2a12dE3ca9D940"
+    },
+    {
+      "name": "BATK",
+      "symbol": "BATS",
+      "decimals": 18,
+      "address": "0x9f63553ff1aE21889495C33f9cE941eEB0413BBE"
+    },
+    {
+      "name": "GNTK",
+      "symbol": "GNTS",
+      "decimals": 18,
+      "address": "0x3126A3fF775fD3A99531A79e89fD604237c1B082"
+    },
+    {
+      "name": "MLTTK",
+      "symbol": "MLTTS",
+      "decimals": 18,
+      "address": "0x8a7b286E41f4A628ECba6FDD583d2b841Cc179fC"
+    },
+    {
+      "name": "DAIL",
+      "symbol": "DAIL",
+      "decimals": 18,
+      "address": "0xD4dE72E4569Fc71627b35EC342611ebC13ae11A2"
+    },
+    {
+      "name": "wBTCL",
+      "symbol": "wBTCP",
+      "decimals": 8,
+      "address": "0xE8DD2a4Fc2B5F5Ae8Fb6595a2d283cf858D07138"
+    },
+    {
+      "name": "BATL",
+      "symbol": "BATW",
+      "decimals": 18,
+      "address": "0x4Dc53659173EF83DC5C9950702E4Aaa6afbc7ad5"
+    },
+    {
+      "name": "GNTL",
+      "symbol": "GNTW",
+      "decimals": 18,
+      "address": "0xEEA147fEe2C785F79Efd1b9C26F65575173Cd421"
+    },
+    {
+      "name": "MLTTL",
+      "symbol": "MLTTW",
+      "decimals": 18,
+      "address": "0xC68931CCcE15C75deABb4A18778EC9C078A5Bee8"
+    },
+    {
+      "name": "Wrapped Ether",
+      "symbol": "WETH",
+      "decimals": 18,
+      "address": "0xe310e950810B1616327E621EF0dd05eb63B26275"
+    }
+  ]
