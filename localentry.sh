@@ -81,4 +81,4 @@ fi
 cd $ZKSYNC_HOME
 source etc/env/dev.env
 source etc/env/.init.env
-exec target/release/zksync_server
+exec zksync_server
