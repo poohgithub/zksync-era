@@ -1,0 +1,31 @@
+{
+  "name": "zkagora-examples",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/bosagora/zkagora-aa-examples",
+  "author": "Evan <youngsoo.jung@bosagora.io>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": ["contracts", "frontend"],
+  "devDependencies": {    
+    "prettier": "^2.8.8"
+  },
+  "scripts": {
+    "test:contracts": "yarn workspace contracts test",
+    "deploy:contracts": "yarn workspace contracts deploy", 
+    "deploy:l1_contracts": "yarn workspace l1_contracts deploy",
+    "compile:contracts": "yarn workspace contracts compile",
+    "deploy:greeter": "yarn workspace contracts greeter",
+    "deploy:gasless": "yarn workspace contracts gasless",
+    "deploy:allowList": "yarn workspace contracts allowList",
+    "deploy:nftGated": "yarn workspace contracts nftGated",
+    "deploy:fixedToken": "yarn workspace contracts fixedToken",
+    "deploy:nft": "yarn workspace contracts nft",
+    "deploy:token": "yarn workspace contracts token",
+    "serve:ui": "yarn workspace frontend dev",
+    "start:ui": "yarn workspace frontend start",
+    "build:ui": "yarn workspace frontend build",
+    "format": "prettier --write \"{frontend,contracts}/**/*.{ts,js,jsx,tsx}\""
+  },
+  "dependencies": {}
+}
