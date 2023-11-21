@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 // load contract artifact. Make sure to compile first!
-import * as ContractArtifact from "../artifacts-zk/contracts/Greeter.sol/Greeter.json";
+import * as ContractArtifact from "../artifacts-zk/contracts/utils/Greeter.sol/Greeter.json";
 
 const PRIVATE_KEY = process.env.WALLET_PRIVATE_KEY || "";
 
@@ -15,7 +15,7 @@ if (!PRIVATE_KEY)
   throw "⛔️ Private key not detected! Add it to the .env file!";
 
 // Address of the contract on zksync testnet
-const CONTRACT_ADDRESS = "0x111C3E89Ce80e62EE88318C2804920D4c96f92bb";
+const CONTRACT_ADDRESS = process.env.GREETER_ADDRESS || "";
 
 if (!CONTRACT_ADDRESS) throw "⛔️ Contract address not provided";
 
@@ -25,24 +25,21 @@ export default async function (hre: HardhatRuntimeEnvironment) {
 
   // Initialize the provider.
   // @ts-ignore
-  const provider = new Provider(hre.userConfig.networks?.zkSyncTestnet?.url);
+  const provider = new Provider(hre.userConfig.networks?.zkSyncLocal?.url);
   const signer = new ethers.Wallet(PRIVATE_KEY, provider);
 
-  // Initialize contract instance
+  // Initialise contract instance
   const contract = new ethers.Contract(
     CONTRACT_ADDRESS,
     ContractArtifact.abi,
-    signer
+    signer,
   );
 
   // Read message from contract
   console.log(`The message is ${await contract.greet()}`);
 
-  // get formatted timestamp
-  const timestamp = new Date().toLocaleString();
-
-  // send transaction to update the message  
-  const newMessage = "Hey man!" + timestamp;
+  // send transaction to update the message
+  const newMessage = "Hello people!";
   const tx = await contract.setGreeting(newMessage);
 
   console.log(`Transaction to change the message is ${tx.hash}`);
