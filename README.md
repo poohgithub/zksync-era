@@ -2,6 +2,46 @@
 
 [![Logo](eraLogo.png)](https://zksync.io/)
 
+## 테스트 
+#### 네트워크 및 서버 실행
+- 네트워크: poohgithub/poohgeth 리파지토리
+```
+cd poohnet
+./init-cmd local
+./enode-cmd
+```
+- DB 서버: poohgithub/zksync-era 리파지토리
+```
+cd poohnet/local-setup
+./start-sql.sh
+```
+- zkSync 서버: poohgithub/zksync-era 리파지토리
+```
+./localentry.sh
+```
+#### 컨트랙트 테스트
+- greeter-example: poohgithub/zksync-era 리파지토리
+```
+cd poohnet/greeter-example
+yarn
+yarn deploy-test
+yarn greet-test
+```
+- paymaster-examples: poohgithub/zksync-era 리파지토리
+```
+cd poohneet/paymaster-examples
+yarn deploy:contracts
+yarn test:contracts
+```
+
+#### 모듈 관계도 및 테스트
+- zksync-web3와 hardhat-zksync-deploy 관계
+- hardhat-zksync-deploy와 zksync-server의 관계
+- paymaster-examples/test/allowlist.test.ts 테스트
+
+![Relations](relations.png)
+
+## Overview
 zkSync Era is a layer 2 rollup that uses zero-knowledge proofs to scale Ethereum without compromising on security or
 decentralization. Since it's EVM compatible (Solidity/Vyper), 99% of Ethereum projects can redeploy without refactoring
 or re-auditing a single line of code. zkSync Era also uses an LLVM-based compiler that will eventually let developers
