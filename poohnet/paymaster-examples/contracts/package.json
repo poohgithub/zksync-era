@@ -28,7 +28,8 @@
     "zksync-web3": "^0.14.3"
   },
   "scripts": {
-    "test": "hardhat test --network zkSyncLocal",
+    "test": "hardhat test",
+    "test:greeter": "hardhat deploy-zksync --script use-greeter.ts",
     "deploy": "hardhat deploy-zksync",
     "greeter": "hardhat deploy-zksync --script greeter.ts",
     "gasless": "hardhat deploy-zksync --script gaslessPaymaster.ts",

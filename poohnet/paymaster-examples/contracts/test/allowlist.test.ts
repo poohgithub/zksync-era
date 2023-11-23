@@ -13,7 +13,7 @@ dotenv.config();
 // load wallet private key from env file
 const PRIVATE_KEY = process.env.WALLET_PRIVATE_KEY || "";
 
-describe("AllowlistPaymaster", function () {
+describe.only("AllowlistPaymaster", function () {
   let provider: Provider;
   let wallet: Wallet;
   let deployer: Deployer;
@@ -38,6 +38,13 @@ describe("AllowlistPaymaster", function () {
     greeter = await deployContract(deployer, "Greeter", ["Hi"]);
     // fund paymaster
     await fundAccount(wallet, paymaster.address, "3");
+
+    // balance of wallet and paymaster
+    const walletBalance = await wallet.getBalance();
+    const paymasterBalance = await provider.getBalance(paymaster.address);
+    console.log(`Wallet balance: ${walletBalance.toString()}`);
+    console.log(`Paymaster balance: ${paymasterBalance.toString()}`);
+
     // set allowance for the user wallet
     const tx = await paymaster
       .connect(wallet)
