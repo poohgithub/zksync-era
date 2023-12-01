@@ -1,0 +1,28 @@
+{
+  "name": "zksync-tutorials",
+  "private": true,
+  "workspaces": [
+    "cross-chain/L1-governance",
+    "cross-chain/L2-counter",
+    "hello-world",
+    "hello-world-docker",
+    "custom-aa",
+    "custom-paymaster",
+    "spend-limit",
+    "tests",
+    "gated-nft",
+    "greeter",
+    "usdc-paymaster-w-api3-data-feeds"
+  ],
+  "version": "0.1.0",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "3.0.0"
+  },
+  "scripts": {
+    "fix:fmt": "prettier --write .",
+    "lint:fmt": "prettier --check .",
+    "install:local:node": "cargo install --git https://github.com/matter-labs/era-test-node.git --locked",
+    "launch:local:node": "era_test_node run"
+  }
+}
