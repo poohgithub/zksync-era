@@ -1,20 +1,21 @@
 import { BigNumber, Contract, ethers, Wallet } from "ethers";
 import { Provider, utils } from "zksync-web3";
 const GOVERNANCE_ABI = require("./governance.json");
-const GOVERNANCE_ADDRESS = "<GOVERNANCE-ADDRESS>";
+const GOVERNANCE_ADDRESS = "0x1d965C3418CaDd496112CAb06960cD28590FF14F";
 const COUNTER_ABI = require("./counter.json");
-const COUNTER_ADDRESS = "<COUNTER-ADDRESS>";
+const COUNTER_ADDRESS = "0x9ED5Dd59f1DAA698DD0dd00D9560704cf9C13De6";
 
 async function main() {
   // Enter your Ethereum L1 provider RPC URL.
-  const l1Provider = new ethers.providers.JsonRpcProvider("<RPC-URL>");
+  const l1Provider = new ethers.providers.JsonRpcProvider("http://localhost:8545");
   // Set up the Governor wallet to be the same as the one that deployed the governance contract.
-  const wallet = new ethers.Wallet("<YOUR-PRIVATE-KEY>", l1Provider);
+  const wallet = new ethers.Wallet("0x3eb15da85647edd9a1159a4a13b9e7c56877c4eb33f614546d4db06a51868b1c", l1Provider);
   // Set a constant that accesses the Layer 1 contract.
   const govcontract = new Contract(GOVERNANCE_ADDRESS, GOVERNANCE_ABI, wallet);
 
   // Initialize the L2 provider.
-  const l2Provider = new Provider("https://testnet.era.zksync.dev");
+  // const l2Provider = new Provider("https://testnet.era.zksync.dev");
+  const l2Provider = new Provider("http://localhost:3050");
   // Get the current address of the zkSync L1 bridge.
   const zkSyncAddress = await l2Provider.getMainContractAddress();
   // Get the `Contract` object of the zkSync bridge.

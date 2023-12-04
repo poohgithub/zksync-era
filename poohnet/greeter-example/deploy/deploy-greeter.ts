@@ -27,6 +27,7 @@ export default async function (hre: HardhatRuntimeEnvironment) {
   // Estimate contract deployment fee
   const greeting = "Hi there!";
   const deploymentFee = await deployer.estimateDeployFee(artifact, [greeting]);
+  console.log(deploymentFee.toString());
 
   // ⚠️ OPTIONAL: You can skip this block if your account already has funds in L2
   // Deposit funds to L2

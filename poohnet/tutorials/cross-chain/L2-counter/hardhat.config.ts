@@ -1,7 +1,28 @@
-import "@matterlabs/hardhat-zksync-deploy";
-import "@matterlabs/hardhat-zksync-solc";
+import { HardhatUserConfig } from "hardhat/config";
 
-module.exports = {
+import "@poohnet/hardhat-zksync-deploy";
+import "@poohnet/hardhat-zksync-solc";
+
+import "@poohnet/hardhat-zksync-verify";
+
+// dynamically changes endpoints for local tests
+const zkSyncTestnet =
+  process.env.NODE_ENV == "test"
+    ? {
+        url: "http://localhost:3050",
+        ethNetwork: "http://localhost:8545",
+        zksync: true,
+      }
+    : {
+        url: "https://zksync2-testnet.zksync.dev",
+        ethNetwork: "goerli",
+        zksync: true,
+        // contract verification endpoint
+        verifyURL:
+          "https://zksync2-testnet-explorer.zksync.dev/contract_verification",
+      };
+
+const config: HardhatUserConfig = {
   zksolc: {
     version: "latest",
     settings: {},
@@ -9,15 +30,35 @@ module.exports = {
   defaultNetwork: "zkSyncTestnet",
   networks: {
     hardhat: {
-      zksync: true,
+      zksync: false,
     },
-    zkSyncTestnet: {
-      url: "https://testnet.era.zksync.dev",
-      ethNetwork: "<GOERLI RPC URL>",
-      zksync: true,
-    },
+    zkSyncTestnet,
   },
   solidity: {
-    version: "0.8.19",
+    compilers: [
+      {
+        version: "0.8.17",
+        settings: {
+          viaIR: true,
+          optimizer: {
+            enabled: true,
+            runs: 18000,
+          },
+        },
+      },
+    ],
+    overrides: {
+      "contracts/WETH.sol": {
+        version: "0.6.6",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 1000000,
+          },
+        },
+      },
+    },
   },
 };
+
+export default config;
